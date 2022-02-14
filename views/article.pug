@@ -1,0 +1,64 @@
+extends layouts/main.layout.pug
+
+block content
+  main.mt-1
+    article.individual-article
+    
+      .image-article
+        img(src="/img/uploads/recipe-img/recipe.jpg", alt="")
+        h1.mt-1.green-text The best pizza ever seen for the whole world 
+
+      .publication-info.mt-1.mb-1
+        p.item-publication-info By: Clark Griffing
+        p.item-publication-info Published: August 30, 2020
+
+      .recipe-details
+        .part-1
+          h4.mb-1.mt-1.btn.green-btn Recipe details
+          ul
+            li.before-clock 90 minutes
+            li.before-users 4 servings
+            li.before-ingredients 11 ingredients
+        .part-2
+          h4.mb-1.mt-1.btn.brown-btn Ingredient list
+          ul
+            li.before-check 90 minutes
+            li.before-check 4 servings
+            li.before-check 11 ingredients
+
+      .instructions.mt-1
+        h4.text-center.btn.green-btn Instructions
+        ol
+          li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias delectus autem molestiae quod tempore? Amet laudantium ut quidem expedita unde, neque voluptates laborum illo ad sed explicabo voluptatem hic ullam!
+          li Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi perspiciatis velit iste exercitationem nostrum iusto impedit error nisi iure ut ratione assumenda delectus pariatur, eum cum, eveniet ullam aspernatur vitae.
+          li Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero molestias non recusandae? Commodi pariatur totam laborum eaque labore, facilis quibusdam, rem numquam obcaecati deleniti doloribus consectetur voluptas fugit odio. Ea!
+      
+      .do-you-like.mt-1.mb-1
+        h4 Do you like this recipe?
+        .like-counter
+          .heart
+            <i class="fa-solid fa-heart"></i>
+          span 87
+
+      .more-similar
+        h4.mb-1 More recipes similar from the community:
+        .similar-articles
+            a.art-container(href="/") 
+              article.art-list
+                img(src="/img/uploads/recipe-img/recipe.jpg", alt="")
+                h5 This is a test
+            
+            a.art-container(href="/") 
+              article.art-list
+                img(src="/img/uploads/recipe-img/recipe.jpg", alt="")
+                h5 This is a test
+            
+            a.art-container(href="/") 
+              article.art-list
+                img(src="/img/uploads/recipe-img/recipe.jpg", alt="")
+                h5 This is a test
+            
+            a.art-container(href="/") 
+              article.art-list
+                img(src="/img/uploads/recipe-img/recipe.jpg", alt="")
+                h5 This is a test hello world hello hello bye

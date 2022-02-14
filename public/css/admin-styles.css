@@ -1,0 +1,207 @@
+/* Importing fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lovers+Quarrel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;400;600&display=swap');
+
+/* Variables */
+:root {
+  --basic-brown: #726662;
+  --light-white: #f5eeea;
+  --white: #f7f7f7d2;
+  --basic-green: #8dad63;
+  --general-black: #575757;
+  --general-grey: #888888;
+  --super-light-white: #e5e5e5;
+  --yellow: #e9d73a;
+}
+
+/* Generals */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--general-black);
+  font-size: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+a,
+a:active {
+  text-decoration: none;
+  color: var(--basic-green);
+}
+
+a:hover {
+  /* color: var(--light-white) !important; */
+  border-color: var(--basic-green) !important;
+}
+
+i {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-style: normal;
+}
+
+ul {
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* Helpers */
+.invisible {
+  display: inline-block;
+}
+
+.invisible {
+  display: none;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
+
+.px-1 {
+  padding: 0 1rem;
+}
+.py-1 {
+  padding: 1rem 0;
+}
+
+.radius-7 {
+  border-radius: 7px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.container {
+  width: 100%;
+  /* background-color: var(--white); */
+}
+
+.logo-menu-container {
+  display: inline-block;
+  width: inherit;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  padding: 2rem 2rem;
+}
+
+.container-admin {
+  margin: 1rem auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+trix-editor {
+  padding: 2rem;
+}
+
+.container-admin .form-container {
+  max-width: 720px;
+}
+
+.input-create-recipe {
+  padding: 0.5rem;
+  border-radius: 7px;
+  margin-left: 1rem;
+  border: solid 1px var(--basic-green);
+}
+
+.recipe.details-create {
+  display: flex;
+  justify-content: space-between;
+}
+
+#input-title {
+  width: 80%;
+}
+
+.measure {
+  width: 80px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+  }
+
+  .navigation #menu li {
+    display: inline-block;
+    margin-right: 2rem;
+  }
+
+  i.menu-btn.mobile {
+    display: none;
+  }
+}
+
+.actions-container {
+  width: 100%;
+}
+
+.actions-container i {
+  font-size: 1.2rem;
+}
+
+.row {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 70% 10% 10% 10%;
+}
+
+.title-actions {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

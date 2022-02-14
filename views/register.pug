@@ -1,0 +1,44 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    include partials/styles.partials.pug
+    title #{title}
+  body 
+    .container-box 
+      .register-login-container
+          form.register-form(action="") 
+            div.text-center.mb-1
+              a.logo-style.white-text(href="/") Recipify
+            .form-group.mb-1
+              label(for="") First name: 
+              input(type="text")
+
+            .form-group.mb-1
+              label(for="") Last name: 
+              input(type="text")
+
+            .form-group.mb-1
+              label(for="") Email: 
+              input(type="email")
+
+            .form-group.mb-1
+              label(for="") Password: 
+              input(type="password")
+
+            .form-group.mb-1
+              label(for="") Confirm password: 
+              input(type="password")
+
+            div.text-center
+              input.btn.green-btn.mt-1(type="submit", value="Register")
+            
+            .separator
+
+            .mt-1.final-links
+              a.white-text.bold-text(href="/login") Login
+              a.white-text.bold-text(href="/") Return home
+
+      

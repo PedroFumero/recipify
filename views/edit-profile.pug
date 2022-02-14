@@ -1,0 +1,26 @@
+extends layouts/admin.layout.pug
+
+block content
+  .container-admin.mt-1
+    h2.mt-1.mb-1.green-text Edit profile
+    .form-container
+      form()
+        .input.separator
+          label(for="") First name: 
+          input.input-create-recipe#input-title(type="text" placeholder="First name")
+        
+        .input.separator
+          label(for="") Last name: 
+          input.input-create-recipe#input-title(type="text" placeholder="Last name")
+
+        .input.separator
+          label(for="") Email: 
+          input.input-create-recipe#input-title(type="email" placeholder="Email")
+
+        .input.separator
+          label(for="") Password: 
+          input.input-create-recipe#input-title(type="password" placeholder="Password")
+
+        
+        .text-center
+          input.btn.green-btn.mt-1(type="submit", value="Update")
