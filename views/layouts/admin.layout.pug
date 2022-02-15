@@ -8,7 +8,7 @@ html(lang="en")
     link(rel="stylesheet", href="/css/trix.css")
     link(rel="stylesheet", href="/css/admin-styles.css")
     script(src="/js/trix.js") 
-    title #{title}
+    title #{ title }
   body 
     .container
       nav.navigation
@@ -16,13 +16,11 @@ html(lang="en")
           a.logo-style(href="/") Recipify
 
         i.menu-btn.mobile.fa-solid.fa-bars
-        
+
         include ../partials/menu.partials.pug
-      
+
       block content
-        
+
       include ../partials/footer.partials.pug
 
     script(src="/js/basic-app.js") 
-    
-          

@@ -1,42 +1,40 @@
 doctype html
-html(lang="en")
+html(lang='en')
   head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet", href="/css/normalize.css")
-    link(rel="stylesheet", href="/css/styles.css")
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/styles.css')
 
     include ../partials/styles.partials.pug
-    title #{title}
+    title #{ title }
   body 
     .container
       nav.navigation
         //- Mobile menu
         .logo-menu-container
-          a.logo-style(href="/") Recipify
+          a.logo-style(href='/') Recipify
           //- img.menu-btn.mobile(src="/img/feather/menu.svg", alt="")
           i.menu-btn.mobile.fa-solid.fa-bars
           .auth-pc-container
-            a.btn.green-btn.mt-1.mb-1.mobile.mr-1(href="/login") Login
-            a.btn.green-btn.mt-1.mb-1.mobile(href="/register") Register
-
+            a.btn.green-btn.mt-1.mb-1.mobile.mr-1(href='/login') Login
+            a.btn.green-btn.mt-1.mb-1.mobile(href='/register') Register
 
         include ../partials/menu.partials.pug
-        
+
         .auth-mobile-container.mt-2.mb-1
-          a.btn.green-btn.mr-1(href="/login") Login
-          a.btn.green-btn(href="/register") Register
+          a.btn.green-btn.mr-1(href='/login') Login
+          a.btn.green-btn(href='/register') Register
 
         if searchBar
-          form#search-form.mt-1.mb-1(action="#") 
+          form#search-form.mt-1.mb-1(action='#') 
             .search-box-container
-              input(type="search", name="term" placeholder="Search recipe...")
-              input.search-btn.green-btn(type="submit", value="Search")
-      
+              input(type='search', name='term', placeholder='Search recipe...')
+              input.search-btn.green-btn(type='submit', value='Search')
+
       block content
 
       include ../partials/footer.partials.pug
 
-
-    script(src="/js/basic-app.js") 
+    script(src='/js/basic-app.js') 

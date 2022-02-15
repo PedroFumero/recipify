@@ -14,6 +14,7 @@
   --yellow: #e9d73a;
   --red: #eb6e6e;
   --blue: #5e9cce;
+  --green: #61be75;
 }
 
 /* Generals */
@@ -492,11 +493,13 @@ i.menu-btn.mobile.fa-solid.fa-bars {
   margin-bottom: 0.6rem;
 }
 
-.before-check {
+.before-check,
+span.ingredientsList li {
   position: relative;
 }
 
-.before-check::before {
+.before-check::before,
+span.ingredientsList li::before {
   content: '\f00c';
   font-weight: 900;
   font-family: 'Font Awesome 5 Free';
@@ -887,4 +890,30 @@ input[type='submit'] {
 .separator {
   padding: 1rem 0;
   border-bottom: solid 1px var(--light-white);
+}
+
+/* Flash messages */
+
+.flash-messages-container-90 {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem !important;
+  border-radius: 7px;
+}
+
+.flash-messages-container-90 li {
+  list-style: none;
+  font-weight: bold;
+}
+
+.error {
+  color: var(--red);
+  background-color: #ffc6c6;
+  border: solid 1px var(--red);
+}
+
+.success {
+  color: var(--green);
+  background-color: #c3ffd0;
+  border: solid 1px var(--green);
 }

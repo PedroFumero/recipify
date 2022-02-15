@@ -1,0 +1,9 @@
+if messages.error
+  ul.mb-1.flash-messages-container-90.error
+    each error in messages.error
+      li - #{ error }
+
+if messages.success
+  ul.mb-1.flash-messages-container-90.success
+    each item in messages.success
+      li #{ item }

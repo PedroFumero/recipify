@@ -1,0 +1,50 @@
+extends layouts/admin.layout.pug
+
+block content
+  .container-admin.mt-1
+    h2.mt-1.mb-1.green-text Create a new recipe
+    .form-container
+      form(action="/recipes/new", method="POST")
+        .input.separator
+          label(for="input-title") Title:
+          input#input-title.input-create-recipe(
+            type="text",
+            placeholder="Title",
+            name="title"
+          )
+
+        h4.mt-1.green-text Recipe details
+        .input.mt-1
+          label(for="minutes") Minutes:
+          input#minutes.input-create-recipe.measure(
+            type="number",
+            placeholder="45",
+            min="1",
+            name="minutes"
+          )
+        .input.mt-1
+          label(for="servings") Servings:
+          input#servings.input-create-recipe.measure(
+            type="number",
+            placeholder="4",
+            min="1",
+            name="servings"
+          )
+        .input.mt-1.mb-1
+          label(for="ingredients") Ingredients:
+          input#ingredients.input-create-recipe.measure(
+            type="number",
+            placeholder="11",
+            min="1",
+            name="ingredients"
+          )
+
+        h4.mt-1.green-text.mb-1 Ingredients list
+        input#y(type="hidden", name="ingredientsList")
+        trix-editor#ingredients(input="y")
+
+        h4.mt-1.green-text.mb-1 Instructions
+        input#x(type="hidden", name="instructions")
+        trix-editor(input="x")
+        .text-center
+          input.btn.green-btn.mt-1(type="submit", value="Create recipe")
