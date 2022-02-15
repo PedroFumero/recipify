@@ -1,8 +1,9 @@
 const { Recipe } = require('../models')
 
 class RecipesController {
-  getHome = (req, res) => {
-    res.render('home', { title: 'Home', searchBar: false })
+  getHome = async (req, res) => {
+    const recipes = await Recipe.findAll()
+    res.render('home', { title: 'Home', searchBar: false, recipes })
   }
 
   getNewRecipe = (req, res) => {
@@ -10,8 +11,11 @@ class RecipesController {
   }
 
   postNewRecipe = async (req, res, next) => {
-    const recipe = await Recipe.create(req.body)
-    console.log(recipe)
+    await Recipe.create({
+      ...req.body,
+      thumbnail: req.file.filename,
+    })
+    console.log(req.file)
     return res.redirect('/recipes/new')
   }
 

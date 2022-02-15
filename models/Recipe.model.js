@@ -13,6 +13,7 @@ const Recipe = db.define('Recipe', {
   ingredients: Sequelize.INTEGER,
   ingredientsList: Sequelize.STRING,
   instructions: Sequelize.STRING,
+  thumbnail: Sequelize.STRING,
 })
 
 module.exports = Recipe

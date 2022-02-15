@@ -4,59 +4,30 @@ block content
   .search-banner
     .form-search-container
       h3.common-h3-title.mb-1 What are you looking for?
-      form#search-form(action="#") 
+      form#search-form(action='#') 
         .search-box-container
-          input(type="search", name="term", placeholder="Search recipe...")
-          input.search-btn.green-btn(type="submit", value="Search")
+          input(type='search', name='term', placeholder='Search recipe...')
+          input.search-btn.green-btn(type='submit', value='Search')
 
   main.latest-shared-container
     h3.common-h3-title.mt-1.mb-1.text-center Latest recipes shared
 
     .recipes-container
-      article.recipe
-        a(href="/recipes/new") 
-          img(src="/img/uploads/recipe-img/recipe.jpg", alt="")
-          h4.recipe-title Recipe name, the best pizza ever seen for the whole world and the most delecious one
-        .article-footer.grey-text
-          .category-icon
-            i.fa-solid.fa-user
-            span Peter
-          .category-icon
-            i.fa-solid.fa-tag
-            span Pizza
-
-      article.recipe
-        a(href="/recipes/new") 
-          img(src="/img/uploads/recipe-img/recipe.jpg", alt="")
-          h4.recipe-title Recipe name, the best pizza ever seen for the whole world and the most delecious one
-        .article-footer.grey-text
-          .category-icon
-            i.fa-solid.fa-user
-            span Peter
-          .category-icon
-            i.fa-solid.fa-tag
-            span Pizza
-
-      article.recipe
-        a(href="/recipes/new") 
-          img(src="/img/uploads/recipe-img/recipe.jpg", alt="")
-          h4.recipe-title Recipe name, the best pizza ever seen for the whole world and the most delecious one
-        .article-footer.grey-text
-          .category-icon
-            i.fa-solid.fa-user
-            span Peter
-          .category-icon
-            i.fa-solid.fa-tag
-            span Pizza
-
-      article.recipe
-        a(href="/recipes/new") 
-          img(src="/img/uploads/recipe-img/recipe.jpg", alt="")
-          h4.recipe-title Recipe name, the best pizza ever seen for the whole world and the most delecious one
-        .article-footer.grey-text
-          .category-icon
-            i.fa-solid.fa-user
-            span Peter
-          .category-icon
-            i.fa-solid.fa-tag
-            span Pizza
+      if recipes.length
+        each recipe in recipes
+          article.recipe
+            a(href=`/recipes/${recipe.id}`) 
+              img(
+                src=`/uploads/thumbnails/${recipe.thumbnail}`,
+                alt=recipe.title
+              )
+              h4.recipe-title #{ recipe.title }
+            .article-footer.grey-text
+              .category-icon
+                i.fa-solid.fa-user
+                span Peter
+              .category-icon
+                i.fa-solid.fa-tag
+                span Pizza
+      else
+        p There's nothing to show

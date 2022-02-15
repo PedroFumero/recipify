@@ -7,7 +7,7 @@ block content
       //-     #{recipe.ingredientsList}
 
       .image-article
-        img(src='/img/uploads/recipe-img/recipe.jpg', alt='')
+        img(src=`/uploads/thumbnails/${recipe.thumbnail}`, alt=recipe.title)
         h1.mt-1.green-text #{ recipe.title }
 
       .publication-info.mt-1.mb-1
