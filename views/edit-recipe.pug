@@ -1,0 +1,72 @@
+extends layouts/admin.layout.pug
+
+block content
+  .container-admin.mt-1
+    //- Flash messages
+    include partials/flash-messages.partials.pug
+    //- Flash messages
+    h2.mt-1.mb-1.green-text Edit a recipe
+    .form-container
+      form(
+        action=`/recipes/${recipe.id}/edit`,
+        method='POST',
+        enctype='multipart/form-data'
+      )
+        .input.separator
+          label(for='input-title') Title:
+          input#input-title.input-create-recipe(
+            type='text',
+            placeholder='Title',
+            name='title',
+            value=recipe.title
+          )
+
+        h4.mt-1.green-text Recipe details
+        .input.mt-1
+          label(for='minutes') Minutes:
+          input#minutes.input-create-recipe.measure(
+            type='number',
+            placeholder='45',
+            min='1',
+            name='minutes',
+            value=recipe.minutes
+          )
+        .input.mt-1
+          label(for='servings') Servings:
+          input#servings.input-create-recipe.measure(
+            type='number',
+            placeholder='4',
+            min='1',
+            name='servings',
+            value=recipe.servings
+          )
+        .input.mt-1.mb-1
+          label(for='ingredients') Ingredients:
+          input#ingredients.input-create-recipe.measure(
+            type='number',
+            placeholder='11',
+            min='1',
+            name='ingredients',
+            value=recipe.ingredients
+          )
+
+        h4.mt-1.green-text.mb-1 Ingredients list
+        input#y(
+          type='hidden',
+          name='ingredientsList',
+          value=recipe.ingredientsList
+        )
+        trix-editor#ingredients(input='y')
+
+        h4.mt-1.green-text.mb-1 Instructions
+        input#x(type='hidden', name='instructions', value=recipe.instructions)
+        trix-editor(input='x')
+
+        h4.mt-1.green-text Thumbnail image
+        .image-recipe-container.separator
+          input.separator(type='file', name='thumbnail')
+          
+          img.img-100.container.radius-7(src=`/uploads/thumbnails/${recipe.thumbnail}`, alt=recipe.title)
+
+        .text-center
+          input.btn.green-btn.mt-1(type='submit', value='Edit recipe')

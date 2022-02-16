@@ -26,4 +26,12 @@ Router.post(
 // Show item
 Router.get('/recipes/:recipeId', RecipesController.getShowRecipe)
 
+// Edit item
+Router.get('/recipes/:recipeId/edit', RecipesController.getEditRecipe)
+Router.post(
+  '/recipes/:recipeId/edit',
+  upload.single('thumbnail'),
+  RecipesController.postEditRecipe
+)
+
 module.exports = Router

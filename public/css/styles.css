@@ -494,12 +494,12 @@ i.menu-btn.mobile.fa-solid.fa-bars {
 }
 
 .before-check,
-span.ingredientsList li {
+.ingredientsList li {
   position: relative;
 }
 
 .before-check::before,
-span.ingredientsList li::before {
+.ingredientsList li::before {
   content: '\f00c';
   font-weight: 900;
   font-family: 'Font Awesome 5 Free';
@@ -916,4 +916,13 @@ input[type='submit'] {
   color: var(--green);
   background-color: #c3ffd0;
   border: solid 1px var(--green);
+}
+
+.image-recipe-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.img-100.container {
+  width: 100%;
 }

@@ -20,9 +20,5 @@
     "mysql2": "^2.3.3",
     "pug": "^3.0.2",
     "sequelize": "^6.16.1"
-  },
-  "devDependencies": {
-    "@prettier/plugin-pug": "^1.19.2",
-    "prettier": "2.5.1"
   }
 }

@@ -2,8 +2,10 @@ const Sequelize = require('sequelize')
 const bcrypt = require('bcrypt')
 const db = require('../config/db')
 
+const Recipe = require('./Recipe.model.js')
+
 const User = db.define(
-  'User',
+  'user',
   {
     id: {
       primaryKey: true,
