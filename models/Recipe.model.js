@@ -13,8 +13,8 @@ const Recipe = db.define('recipe', {
   minutes: Sequelize.INTEGER,
   servings: Sequelize.INTEGER,
   ingredients: Sequelize.INTEGER,
-  ingredientsList: Sequelize.STRING,
-  instructions: Sequelize.STRING,
+  ingredientsList: Sequelize.STRING(1000),
+  instructions: Sequelize.TEXT,
   thumbnail: Sequelize.STRING,
 })
 

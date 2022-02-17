@@ -52,8 +52,8 @@ app.use((req, res, next) => {
 })
 
 // Gettings info by POST method
-// app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 // Enabling static files
 app.use(express.static(path.join(__dirname, 'public')))
 // Enabling routes

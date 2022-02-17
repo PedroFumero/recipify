@@ -1,17 +1,18 @@
 const fs = require('fs')
 const path = require('path')
-const { Recipe, User } = require('../models')
+const { Recipe, User, Like } = require('../models')
 
 class RecipesController {
   getHome = async (req, res) => {
     const recipes = await Recipe.findAll({
       include: {
         model: User,
+        attributes: ['firstName', 'id'],
       },
       attributes: ['thumbnail', 'id', 'title'],
       // Extraer datos de modelo de usuario
     })
-    console.log(recipes[0])
+    // console.log(recipes[0].user)
     res.render('home', { title: 'Home', searchBar: false, recipes })
   }
 
@@ -31,12 +32,22 @@ class RecipesController {
 
   getShowRecipe = async (req, res, next) => {
     const { recipeId } = req.params
-    const recipe = await Recipe.findByPk(recipeId)
+    const recipe = await Recipe.findByPk(recipeId, {
+      include: {
+        model: User,
+        attributes: ['firstName', 'lastName'],
+      },
+    })
 
     if (!recipe) {
       return next()
     }
-    res.render('show-recipe', { title: 'Recipe', recipe })
+
+    res.render('show-recipe', {
+      title: 'Recipe',
+      recipe,
+      date: new Date(recipe.createdAt).toLocaleDateString('pt-PT'),
+    })
   }
 
   getEditRecipe = async (req, res, next) => {
@@ -59,10 +70,6 @@ class RecipesController {
     recipe.servings = req.body.servings
     recipe.ingredients = req.body.ingredients
     recipe.ingredientsList = req.body.ingredientsList
-    console.log()
-    console.log(req.body.instructions)
-    console.log()
-
     recipe.instructions = req.body.instructions
 
     if (req.file) {
@@ -90,6 +97,28 @@ class RecipesController {
     await recipe.save()
 
     res.redirect('back')
+  }
+
+  likeRecipe = async (req, res, next) => {
+    const { recipeId } = req.body
+
+    const isLiked = await Like.findOne({ where: { userId: 1, recipeId } })
+
+    if (!isLiked) {
+      await Like.create({ recipeId, userId: 1 })
+    } else {
+      await Like.destroy({ where: { recipeId, userId: 1 } })
+    }
+
+    const counter = await Like.count({ recipeId })
+    return res.json({ counter })
+  }
+
+  getLikes = async (req, res, next) => {
+    const { recipeId } = req.params
+    console.log(recipeId)
+    const counter = await Like.count({ recipeId })
+    return res.json({ counter })
   }
 }
 

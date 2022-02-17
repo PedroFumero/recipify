@@ -34,4 +34,8 @@ Router.post(
   RecipesController.postEditRecipe
 )
 
+// Likes
+Router.get('/recipes/like/:recipeId', RecipesController.getLikes)
+Router.post('/recipes/like', RecipesController.likeRecipe)
+
 module.exports = Router

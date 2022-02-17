@@ -11,8 +11,8 @@ block content
         h1.mt-1.green-text #{ recipe.title }
 
       .publication-info.mt-1.mb-1
-        p.item-publication-info By: Clark Griffing
-        p.item-publication-info Published: #{ recipe.createdAt }
+        p.item-publication-info By: #{recipe.user.firstName} #{recipe.user.lastName}
+        p.item-publication-info Published: #{ date }
 
       .recipe-details
         .part-1
@@ -38,8 +38,8 @@ block content
         h4 Do you like this recipe?
         .like-counter
           .heart
-            i.fa-solid.fa-heart
-          span 87
+            i.fa-solid.fa-heart(data-recipe-id=`${recipe.id}`)
+          span#likesCounter 0
 
       .more-similar
         h4.mb-1 More recipes similar from the community:
@@ -63,3 +63,6 @@ block content
             article.art-list
               img(src='/img/uploads/recipe-img/recipe.jpg', alt='')
               h5 This is a test hello world hello hello bye
+
+block scripts
+  script(src="/js/likes.js") 
