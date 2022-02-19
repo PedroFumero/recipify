@@ -9,7 +9,7 @@ html(lang='en')
   body 
     .container-box 
       .register-login-container
-        form.register-form(action='') 
+        form.register-form(action='/login' method="POST") 
           //- Flash messages
           include partials/flash-messages.partials.pug
           //- Flash messages
@@ -17,15 +17,15 @@ html(lang='en')
             a.logo-style.white-text(href='/') Recipify
 
           .form-group.mb-1
-            label(for='') Email:
-            input(type='email', placeholder='Email')
+            label(for='email') Email:
+            input#email(type='email', placeholder='Email' name="email" value="1@1.com")
 
           .form-group.mb-1
-            label(for='') Password:
-            input(type='password', placeholder='Password')
+            label(for='password') Password:
+            input#password(type='password', placeholder='Password' name="password" value="123")
 
           .text-center
-            input.btn.green-btn.mt-1(type='submit', value='Register')
+            input.btn.green-btn.mt-1(type='submit', value='Login')
 
           .separator
 

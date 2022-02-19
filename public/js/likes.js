@@ -19,8 +19,23 @@ const postLike = () => {
           return response.json()
         })
         .then((data) => {
-          likeContainer.children[1].textContent = data.counter
           // console.log(data)
+          likeContainer.children[1].textContent = data.counter
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: 'Sign in',
+            text: 'To give a like you need to sign in.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#8dad63',
+            cancelButtonColor: '#eb6e6e',
+            confirmButtonText: 'Login',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = `${window.location.origin}/login`
+            }
+          })
         })
     }
   })

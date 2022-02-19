@@ -18,14 +18,22 @@ html(lang='en')
           //- img.menu-btn.mobile(src="/img/feather/menu.svg", alt="")
           i.menu-btn.mobile.fa-solid.fa-bars
           .auth-pc-container
-            a.btn.green-btn.mt-1.mb-1.mobile.mr-1(href='/login') Login
-            a.btn.green-btn.mt-1.mb-1.mobile(href='/register') Register
+            if authenticated
+              a.btn.green-btn.mt-1.mb-1.mobile.mr-1(href='/recipes/new') Create recipe
+              //- a.btn.green-btn.mt-1.mb-1.mobile(href='/register') Register
+            else
+              a.btn.green-btn.mt-1.mb-1.mobile.mr-1(href='/login') Login
+              a.btn.green-btn.mt-1.mb-1.mobile(href='/register') Register
 
         include ../partials/menu.partials.pug
 
         .auth-mobile-container.mt-2.mb-1
-          a.btn.green-btn.mr-1(href='/login') Login
-          a.btn.green-btn(href='/register') Register
+          if authenticated
+              a.btn.green-btn.mt-1.mb-1.mobile.mr-1(href='/recipes/new') Create recipe
+              //- a.btn.green-btn.mt-1.mb-1.mobile(href='/register') Register
+          else
+            a.btn.green-btn.mt-1.mb-1.mobile.mr-1(href='/login') Login
+            a.btn.green-btn.mt-1.mb-1.mobile(href='/register') Register
 
         if searchBar
           form#search-form.mt-1.mb-1(action='#') 

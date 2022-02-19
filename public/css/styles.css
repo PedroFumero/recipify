@@ -680,7 +680,7 @@ i.menu-btn.mobile.fa-solid.fa-bars {
 article.art-list {
   width: 200px;
   height: 125px;
-  background-color: rebeccapurple;
+  /* background-color: rebeccapurple; */
   margin-bottom: 2rem;
 }
 
@@ -709,6 +709,10 @@ article.art-list img {
   border-radius: 0 0 12px 12px;
 }
 
+.separator-auth {
+  display: none;
+}
+
 /* Article */
 
 @media screen and (min-width: 425px) {
@@ -729,6 +733,10 @@ article.art-list img {
 }
 
 @media screen and (min-width: 768px) {
+  .separator-auth {
+    display: inline-block;
+  }
+
   .auth-pc-container {
     display: inline-block;
   }

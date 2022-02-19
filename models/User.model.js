@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const bcrypt = require('bcrypt')
 const db = require('../config/db')
 
-const Recipe = require('./Recipe.model.js')
+// const Recipe = require('./Recipe.model.js')
 
 const User = db.define(
   'user',
@@ -70,5 +70,9 @@ const User = db.define(
     },
   }
 )
+
+User.prototype.verifyPassword = function (password) {
+  return bcrypt.compareSync(password, this.password)
+}
 
 module.exports = User

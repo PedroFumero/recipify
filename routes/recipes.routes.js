@@ -10,16 +10,21 @@ const upload = multer({
   fileFilter: multerConfig.fileFilterConfig,
 })
 
-const { RecipesController } = require('../controllers')
+const { RecipesController, AuthController } = require('../controllers')
 
 // Home
 Router.get('/', RecipesController.getHome)
 
 // New item
-Router.get('/recipes/new', RecipesController.getNewRecipe)
+Router.get(
+  '/recipes/new',
+  AuthController.isAuthenticated,
+  RecipesController.getNewRecipe
+)
 Router.post(
   '/recipes/new',
   upload.single('thumbnail'),
+  AuthController.isAuthenticated,
   RecipesController.postNewRecipe
 )
 
@@ -27,15 +32,27 @@ Router.post(
 Router.get('/recipes/:recipeId', RecipesController.getShowRecipe)
 
 // Edit item
-Router.get('/recipes/:recipeId/edit', RecipesController.getEditRecipe)
+Router.get(
+  '/recipes/:recipeId/edit',
+  AuthController.isAuthenticated,
+  RecipesController.getEditRecipe
+)
 Router.post(
   '/recipes/:recipeId/edit',
+  AuthController.isAuthenticated,
   upload.single('thumbnail'),
   RecipesController.postEditRecipe
 )
 
 // Likes
 Router.get('/recipes/like/:recipeId', RecipesController.getLikes)
-Router.post('/recipes/like', RecipesController.likeRecipe)
+Router.post(
+  '/recipes/like',
+  AuthController.isAuthenticated,
+  RecipesController.likeRecipe
+)
+
+// Admin
+Router.get('/admin', RecipesController.getAdmin)
 
 module.exports = Router

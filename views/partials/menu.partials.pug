@@ -1,7 +1,17 @@
 ul#menu.invisible 
   li
-    span.white-text Hello, Pedro
+    a(href="/categories") Categories
   li
-    a(href="/edit-profile") Edit profile
+    a(href="/about") About
   li
-    a(href="#") Log out
+    a(href="/contact") Contact
+  if user
+    span.separator-auth.white-text.mr-1 |
+    li
+      a(href="/admin") Admin panel
+    li
+      a(href="/edit-profile") Edit profile
+    li
+      a(href="/logout") Log out
+  
+    

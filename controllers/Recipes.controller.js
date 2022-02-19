@@ -12,6 +12,7 @@ class RecipesController {
       attributes: ['thumbnail', 'id', 'title'],
       // Extraer datos de modelo de usuario
     })
+    // console.log(req.user)
     // console.log(recipes[0].user)
     res.render('home', { title: 'Home', searchBar: false, recipes })
   }
@@ -21,13 +22,13 @@ class RecipesController {
   }
 
   postNewRecipe = async (req, res, next) => {
-    await Recipe.create({
+    const recipe = await Recipe.create({
       ...req.body,
       thumbnail: req.file.filename,
-      userId: 1,
+      userId: req.user.id,
     })
-    console.log(req.file)
-    return res.redirect('/recipes/new')
+    // console.log(req.file)
+    return res.redirect(`/recipes/${recipe.id}/edit`)
   }
 
   getShowRecipe = async (req, res, next) => {
@@ -52,7 +53,9 @@ class RecipesController {
 
   getEditRecipe = async (req, res, next) => {
     const { recipeId } = req.params
-    const recipe = await Recipe.findByPk(recipeId)
+    const recipe = await Recipe.findOne({
+      where: { id: recipeId, userId: req.user.id },
+    })
 
     if (!recipe) {
       return next()
@@ -63,7 +66,9 @@ class RecipesController {
 
   postEditRecipe = async (req, res, next) => {
     const { recipeId } = req.params
-    const recipe = await Recipe.findByPk(recipeId)
+    const recipe = await Recipe.findOne({
+      where: { id: recipeId, userId: req.user.id },
+    })
 
     recipe.title = req.body.title
     recipe.minutes = req.body.minutes
@@ -102,23 +107,36 @@ class RecipesController {
   likeRecipe = async (req, res, next) => {
     const { recipeId } = req.body
 
-    const isLiked = await Like.findOne({ where: { userId: 1, recipeId } })
+    const isLiked = await Like.findOne({
+      where: { userId: req.user.id, recipeId },
+    })
 
     if (!isLiked) {
-      await Like.create({ recipeId, userId: 1 })
+      await Like.create({ recipeId, userId: req.user.id })
     } else {
-      await Like.destroy({ where: { recipeId, userId: 1 } })
+      await Like.destroy({ where: { recipeId, userId: req.user.id } })
     }
 
-    const counter = await Like.count({ recipeId })
+    const counter = await Like.count({ where: { recipeId } })
+    // console.log(counter)
     return res.json({ counter })
   }
 
   getLikes = async (req, res, next) => {
     const { recipeId } = req.params
-    console.log(recipeId)
-    const counter = await Like.count({ recipeId })
+    // console.log(recipeId)
+    const counter = await Like.count({ where: { recipeId } })
     return res.json({ counter })
+  }
+
+  // Admin
+  getAdmin = async (req, res, next) => {
+    try {
+      const recipes = await Recipe.findAll({ where: { userId: req.user.id } })
+      res.render('admin', { title: 'Admin panel', recipes })
+    } catch (error) {
+      return next()
+    }
   }
 }
 

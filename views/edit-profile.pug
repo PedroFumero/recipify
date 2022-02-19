@@ -6,32 +6,39 @@ block content
     .form-container
       form
         .input.separator
-          label(for="") First name:
+          label(for="firstName") First name:
           input#input-title.input-create-recipe(
             type="text",
             placeholder="First name"
+            name="firstName"
+            value=user.firstName
           )
 
         .input.separator
-          label(for="") Last name:
+          label(for="lastName") Last name:
           input#input-title.input-create-recipe(
             type="text",
             placeholder="Last name"
+            name="lastName"
+            value=user.lastName
           )
 
         .input.separator
-          label(for="") Email:
+          label(for="email") Email:
           input#input-title.input-create-recipe(
             type="email",
             placeholder="Email"
+            name="email"
+            value=user.email
           )
 
         .input.separator
-          label(for="") Password:
+          label(for="password") Password:
           input#input-title.input-create-recipe(
             type="password",
             placeholder="Password"
+            name="password"
           )
 
         .text-center
-          input.btn.green-btn.mt-1(type="submit", value="Update")
+          input.btn.green-btn.mt-1(type="submit", value="Update profile")

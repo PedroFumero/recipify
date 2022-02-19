@@ -3,13 +3,14 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const flash = require('connect-flash')
+const passport = require('./config/passport')
 const app = express()
 
 // Helpers
 const { vardump } = require('./helpers')
 
 // Importing routes
-const { RecipeRoutes, AuthRoutes } = require('./routes')
+const { RecipeRoutes, AuthRoutes, UserRoutes } = require('./routes')
 // Importing DB config
 const db = require('./config/db')
 
@@ -42,11 +43,19 @@ app.use(
     saveUninitialized: true,
   })
 )
+// Using passport
+app.use(passport.initialize())
+app.use(passport.session())
+
 // Using flash
 app.use(flash())
 
 app.use((req, res, next) => {
   res.locals.vardump = vardump
+  if (req.isAuthenticated()) {
+    res.locals.authenticated = true
+    res.locals.user = req.user
+  }
   res.locals.messages = req.flash()
   next()
 })
@@ -59,32 +68,21 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Enabling routes
 app.use(RecipeRoutes)
 app.use(AuthRoutes)
-
-app.get('/article', (req, res) => {
-  res.render('article', { title: 'Article', searchBar: true })
-})
+app.use(UserRoutes)
 
 // app.get('/register', (req, res) => {
 //   res.render('register', { title: 'Register', searchBar: true })
 // })
 
-app.get('/login', (req, res) => {
-  res.render('login', { title: 'Login', searchBar: true })
-})
+// app.get('/create-recipe', (req, res) => {
+//   res.render('recipes/create-recipe', {
+//     title: 'Create recipe',
+//     searchBar: true,
+//   })
+// })
 
-app.get('/create-recipe', (req, res) => {
-  res.render('recipes/create-recipe', {
-    title: 'Create recipe',
-    searchBar: true,
-  })
-})
-
-app.get('/admin', (req, res) => {
-  res.render('admin', { title: 'Admin panel' })
-})
-
-app.get('/edit-profile', (req, res) => {
-  res.render('edit-profile', { title: 'Edit profile' })
+app.use('*', (req, res) => {
+  res.render('404')
 })
 
 app.listen(3000, () => {
