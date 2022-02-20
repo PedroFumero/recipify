@@ -3,6 +3,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const flash = require('connect-flash')
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const passport = require('./config/passport')
 const app = express()
 
@@ -41,6 +42,7 @@ app.use(
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
+    store: new SequelizeStore({ db: db }),
   })
 )
 // Using passport
