@@ -48,6 +48,7 @@ class RecipesController {
       title: 'Recipe',
       recipe,
       date: new Date(recipe.createdAt).toLocaleDateString('pt-PT'),
+      searchBar: true,
     })
   }
 
