@@ -3,11 +3,15 @@ extends layouts/admin.layout.pug
 block content
   .container-admin.mt-1
     h2.mt-1.mb-1.green-text Edit profile
+    p.separator Fill the inputs to change your info
+    //- Flash messages
+    include partials/flash-messages.partials.pug
+    //- Flash messages
     .form-container
-      form
+      form(method="POST" action="/edit-profile")
         .input.separator
           label(for="firstName") First name:
-          input#input-title.input-create-recipe(
+          input.input-title.input-create-recipe(
             type="text",
             placeholder="First name"
             name="firstName"
@@ -16,7 +20,7 @@ block content
 
         .input.separator
           label(for="lastName") Last name:
-          input#input-title.input-create-recipe(
+          input.input-title.input-create-recipe(
             type="text",
             placeholder="Last name"
             name="lastName"
@@ -25,7 +29,7 @@ block content
 
         .input.separator
           label(for="email") Email:
-          input#input-title.input-create-recipe(
+          input.input-title.input-create-recipe(
             type="email",
             placeholder="Email"
             name="email"
@@ -34,9 +38,9 @@ block content
 
         .input.separator
           label(for="password") Password:
-          input#input-title.input-create-recipe(
+          input.input-title.input-create-recipe(
             type="password",
-            placeholder="Password"
+            placeholder="New password"
             name="password"
           )
 

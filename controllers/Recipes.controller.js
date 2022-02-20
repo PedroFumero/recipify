@@ -10,7 +10,7 @@ class RecipesController {
         attributes: ['firstName', 'id'],
       },
       attributes: ['thumbnail', 'id', 'title'],
-      // Extraer datos de modelo de usuario
+      order: [['createdAt', 'DESC']],
     })
     // console.log(req.user)
     // console.log(recipes[0].user)
@@ -132,11 +132,27 @@ class RecipesController {
   // Admin
   getAdmin = async (req, res, next) => {
     try {
-      const recipes = await Recipe.findAll({ where: { userId: req.user.id } })
+      const recipes = await Recipe.findAll({
+        where: { userId: req.user.id },
+        order: [['createdAt', 'DESC']],
+      })
       res.render('admin', { title: 'Admin panel', recipes })
     } catch (error) {
       return next()
     }
+  }
+
+  deleteRecipe = async (req, res, next) => {
+    const { recipeId } = req.body
+    const deleted = await Recipe.destroy({
+      where: { id: recipeId, userId: req.user.id },
+    })
+
+    if (!deleted) {
+      return res.json({ status: 403 })
+    }
+
+    res.json({ status: 200 })
   }
 }
 

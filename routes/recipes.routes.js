@@ -53,6 +53,9 @@ Router.post(
 )
 
 // Admin
-Router.get('/admin', RecipesController.getAdmin)
+Router.get('/admin', AuthController.isAuthenticated, RecipesController.getAdmin)
+
+// Delete
+Router.delete('/recipes/delete', RecipesController.deleteRecipe)
 
 module.exports = Router

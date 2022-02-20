@@ -251,6 +251,11 @@ button:focus {
   cursor: pointer;
 }
 
+.admin-create-recipe-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .search-btn input[type='submit'] {
   color: var(--light-white);
   margin-left: 0.5rem;
@@ -933,4 +938,44 @@ input[type='submit'] {
 
 .img-100.container {
   width: 100%;
+}
+
+.image-container {
+  max-width: 500px;
+  margin-bottom: 10px;
+}
+
+.image-container img {
+  width: 100%;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.container-404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.text-404 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2rem;
+  color: var(--basic-green);
+  text-shadow: 1px 1px 0 white;
+  display: inline-block;
+  padding: 1.5rem;
+  border: 3px solid var(--basic-green);
+  border-radius: 12px;
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+.footer-text {
+  font-size: 1.3rem;
 }

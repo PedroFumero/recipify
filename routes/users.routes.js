@@ -6,7 +6,13 @@ const { UserController, AuthController } = require('../controllers')
 Router.get(
   '/edit-profile',
   AuthController.isAuthenticated,
-  UserController.editProfile
+  UserController.getEditProfile
+)
+
+Router.post(
+  '/edit-profile',
+  AuthController.isAuthenticated,
+  UserController.postEditProfile
 )
 
 module.exports = Router

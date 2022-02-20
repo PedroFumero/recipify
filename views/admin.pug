@@ -1,10 +1,12 @@
 extends layouts/admin.layout.pug
 
 block content
+  div.mt-1.admin-create-recipe-btn 
+    a.btn.green-btn.mr-1(href='/recipes/new') Create new recipe 
   .container-admin.mt-1
     h2.mt-1.mb-1.green-text Admin panel
     .actions-container
-      .row 
+      .row
         .title-actions.mb-1.green-text.bold Title
         .icon-actions.text-center.mb-1.green-text.bold Show
         .icon-actions.text-center.mb-1.green-text.bold Edit
@@ -20,8 +22,12 @@ block content
             .icon-actions.text-center
               a.brown-text(href=`/recipes/${recipe.id}/edit`) 
                 i.fa-solid.fa-pen
-            .icon-actions.text-center 
-              a.red-text(href="") 
-                i.fa-solid.fa-trash
+            .icon-actions.text-center
+              a.red-text(href="#") 
+                i.fa-solid.fa-trash.delete-item(data-recipe-id=recipe.id)
+
+block scripts
+  script(src='//cdn.jsdelivr.net/npm/sweetalert2@11')
+  script(src="/js/delete-items.js") 
 
    

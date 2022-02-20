@@ -158,7 +158,7 @@ trix-editor {
   justify-content: space-between;
 }
 
-#input-title {
+.input-title {
   width: 80%;
 }
 

@@ -70,17 +70,6 @@ app.use(RecipeRoutes)
 app.use(AuthRoutes)
 app.use(UserRoutes)
 
-// app.get('/register', (req, res) => {
-//   res.render('register', { title: 'Register', searchBar: true })
-// })
-
-// app.get('/create-recipe', (req, res) => {
-//   res.render('recipes/create-recipe', {
-//     title: 'Create recipe',
-//     searchBar: true,
-//   })
-// })
-
 app.use('*', (req, res) => {
   res.render('404')
 })
