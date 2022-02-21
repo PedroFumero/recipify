@@ -11,18 +11,20 @@ block content
         h1.mt-1.green-text #{ recipe.title }
 
       .publication-info.mt-1.mb-1
-        p.item-publication-info By: #{recipe.user.firstName} #{recipe.user.lastName}
-        p.item-publication-info Published: #{ date }
+        p.item-publication-info #[i.fa-solid.fa-user.green-text] By: #[span.bold #{recipe.user.firstName} #{recipe.user.lastName}]
+        p.item-publication-info #[i.fa-solid.fa-calendar.green-text] Published: #[span.bold #{ date }]
 
       .recipe-details
         .part-1
-          h4.mb-1.mt-1.btn.green-btn Recipe details
+          div.text-center
+            h4.mb-1.mt-1.btn.green-btn Recipe details
           ul
             li.before-clock #{ recipe.minutes } minutes
             li.before-users #{ recipe.servings } servings
             li.before-ingredients #{ recipe.ingredients } ingredients
         .part-2
-          h4.mb-1.mt-1.btn.brown-btn Ingredient list
+          div.text-center
+            h4.mb-1.mt-1.btn.brown-btn Ingredient list
           .ingredientsList
             | !{ recipe.ingredientsList }
 
@@ -38,27 +40,28 @@ block content
           span#likesCounter 0
 
       .more-similar
-        h4.mb-1 More recipes similar from the community:
+        h4.mb-1 More similar recipes on #[span.green-text #{recipe.category.name}] category:
         .similar-articles
-          a.art-container(href='/') 
-            article.art-list
-              img(src='/img/uploads/recipe-img/recipe.jpg', alt='')
-              h5 This is a test
+          each similarRecipe in similarRecipes
+            a.art-container(href=`/recipes/${similarRecipe.id}`) 
+              article.art-list
+                img(src=`/uploads/thumbnails/${similarRecipe.thumbnail}`, alt=similarRecipe.title)
+                h5 #{similarRecipe.title}
 
-          a.art-container(href='/') 
-            article.art-list
-              img(src='/img/uploads/recipe-img/recipe.jpg', alt='')
-              h5 This is a test
+          //- a.art-container(href='/') 
+          //-   article.art-list
+          //-     img(src='/img/uploads/recipe-img/recipe.jpg', alt='')
+          //-     h5 This is a test
 
-          a.art-container(href='/') 
-            article.art-list
-              img(src='/img/uploads/recipe-img/recipe.jpg', alt='')
-              h5 This is a test
+          //- a.art-container(href='/') 
+          //-   article.art-list
+          //-     img(src='/img/uploads/recipe-img/recipe.jpg', alt='')
+          //-     h5 This is a test
 
-          a.art-container(href='/') 
-            article.art-list
-              img(src='/img/uploads/recipe-img/recipe.jpg', alt='')
-              h5 This is a test hello world hello hello bye
+          //- a.art-container(href='/') 
+          //-   article.art-list
+          //-     img(src='/img/uploads/recipe-img/recipe.jpg', alt='')
+          //-     h5 This is a test hello world hello hello bye
 
 block scripts
   script(src='//cdn.jsdelivr.net/npm/sweetalert2@11')

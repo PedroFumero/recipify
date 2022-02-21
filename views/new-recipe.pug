@@ -2,6 +2,9 @@ extends layouts/admin.layout.pug
 
 block content
   .container-admin.mt-1
+    //- Flash messages
+    include partials/flash-messages.partials.pug
+    //- Flash messages
     h2.mt-1.mb-1.green-text Create a new recipe
     .form-container
       form(action='/recipes/new', method='POST', enctype='multipart/form-data')
@@ -49,6 +52,12 @@ block content
 
         h4.mt-1.green-text Thumbnail image
         input.separator(type='file', name='thumbnail')
+
+        h4.mt-1.green-text Select a category
+        select#category.mt-1(name="category" required)
+          option(value="none" disabled selected) -- Category --
+          each category in categories
+            option(value=category.id) #{category.name}
 
         .text-center
           input.btn.green-btn.mt-1(type='submit', value='Create recipe')

@@ -1,43 +1,66 @@
 const fs = require('fs')
 const path = require('path')
-const { Recipe, User, Like } = require('../models')
+const { Recipe, User, Like, Category } = require('../models')
 
 class RecipesController {
   getHome = async (req, res) => {
     const recipes = await Recipe.findAll({
-      include: {
-        model: User,
-        attributes: ['firstName', 'id'],
-      },
+      include: [
+        {
+          model: User,
+          attributes: ['firstName', 'id'],
+        },
+        {
+          model: Category,
+          attributes: ['id', 'name'],
+        },
+      ],
       attributes: ['thumbnail', 'id', 'title'],
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
     })
-    // console.log(req.user)
-    // console.log(recipes[0].user)
+    // console.log(recipes[0].category)
     res.render('home', { title: 'Home', searchBar: false, recipes })
   }
 
-  getNewRecipe = (req, res) => {
-    res.render('new-recipe', { title: 'Recipe' })
+  getNewRecipe = async (req, res) => {
+    const categories = await Category.findAll()
+    res.render('new-recipe', { title: 'Recipe', categories })
   }
 
   postNewRecipe = async (req, res, next) => {
-    const recipe = await Recipe.create({
-      ...req.body,
-      thumbnail: req.file.filename,
-      userId: req.user.id,
-    })
-    // console.log(req.file)
-    return res.redirect(`/recipes/${recipe.id}/edit`)
+    try {
+      const recipe = await Recipe.create({
+        ...req.body,
+        thumbnail: req.file.filename,
+        userId: req.user.id,
+        categoryId: req.body.category,
+      })
+      // console.log(req.file)
+      return res.redirect(`/recipes/${recipe.id}/edit`)
+    } catch (error) {
+      req.flash('error', ['Thumbnail is required'])
+      return res.redirect('back')
+    }
   }
 
   getShowRecipe = async (req, res, next) => {
     const { recipeId } = req.params
     const recipe = await Recipe.findByPk(recipeId, {
-      include: {
-        model: User,
-        attributes: ['firstName', 'lastName'],
-      },
+      include: [
+        {
+          model: User,
+          attributes: ['firstName', 'lastName'],
+        },
+        {
+          model: Category,
+          attributes: ['id', 'name'],
+        },
+      ],
+    })
+
+    const similarRecipes = await Recipe.findAll({
+      where: { categoryId: recipe.categoryId },
+      limit: 4,
     })
 
     if (!recipe) {
@@ -49,6 +72,7 @@ class RecipesController {
       recipe,
       date: new Date(recipe.createdAt).toLocaleDateString('pt-PT'),
       searchBar: true,
+      similarRecipes,
     })
   }
 

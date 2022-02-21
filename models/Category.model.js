@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../config/db')
 
+const Recipe = require('./Recipe.model')
+
 const Category = db.define(
   'category',
   {
@@ -16,5 +18,8 @@ const Category = db.define(
   },
   { timestamps: false }
 )
+
+Category.hasOne(Recipe)
+Recipe.belongsTo(Category)
 
 module.exports = Category

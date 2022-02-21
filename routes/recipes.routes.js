@@ -58,4 +58,9 @@ Router.get('/admin', AuthController.isAuthenticated, RecipesController.getAdmin)
 // Delete
 Router.delete('/recipes/delete', RecipesController.deleteRecipe)
 
+// Search
+Router.get('/search', (req, res) => {
+  res.render('search', { title: 'Search', searchBar: true })
+})
+
 module.exports = Router

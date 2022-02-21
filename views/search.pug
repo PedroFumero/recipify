@@ -1,0 +1,34 @@
+extends layouts/main.layout.pug
+
+block content
+  main.mt-1
+    article.individual-article
+      //- pre
+      //-     #{recipe.ingredientsList}
+      h3.text-center.green-text.mb-1 Search results for: term
+      .search-container
+        .container-img-search
+          img(src="/img/search.png", alt="Search image")
+      
+        .search-results
+          article.search-result.mb-1
+            a(href="#")
+              img(src="/uploads/thumbnails/thumbnail-1.png", alt="")
+            a(href="#") #[h3.mt-1 This is a title asdasd adasd a adsdasds asdasdasdsadThis is a title asdasd adasd a adsdasds asdasdasdsad]
+
+          article.search-result.mb-1
+            a(href="#")
+              img(src="/uploads/thumbnails/thumbnail-1.png", alt="")
+            a(href="#") #[h3.mt-1 This is a title asdasd adasd a adsdasds asdasdasdsadThis is a title asdasd adasd a adsdasds asdasdasdsad]
+
+          article.search-result.mb-1
+            a(href="#")
+              img(src="/uploads/thumbnails/thumbnail-1.png", alt="")
+            a(href="#") #[h3.mt-1 This is a title asdasd adasd a adsdasds asdasdasdsadThis is a title asdasd adasd a adsdasds asdasdasdsad]
+
+
+
+
+block scripts
+  script(src='//cdn.jsdelivr.net/npm/sweetalert2@11')
+  script(src="/js/likes.js") 
