@@ -5,26 +5,15 @@ block content
     article.individual-article
       //- pre
       //-     #{recipe.ingredientsList}
-      h3.text-center.green-text.mb-1 Search results for: term
+      h3.text-center.green-text.mb-1 Search results for: #[span.brown-text Term]
       .search-container
-        .container-img-search
-          img(src="/img/search.png", alt="Search image")
-      
-        .search-results
+        each searchResult in searchResults
           article.search-result.mb-1
-            a(href="#")
-              img(src="/uploads/thumbnails/thumbnail-1.png", alt="")
-            a(href="#") #[h3.mt-1 This is a title asdasd adasd a adsdasds asdasdasdsadThis is a title asdasd adasd a adsdasds asdasdasdsad]
+            a(href=`/recipes/${searchResult.id}`)
+              img(src=`/uploads/thumbnails/${searchResult.thumbnail}`, alt=searchResult.title)
+            a(href=`/recipes/${searchResult.id}`) #[h3.mt-1 #{searchResult.title}]
 
-          article.search-result.mb-1
-            a(href="#")
-              img(src="/uploads/thumbnails/thumbnail-1.png", alt="")
-            a(href="#") #[h3.mt-1 This is a title asdasd adasd a adsdasds asdasdasdsadThis is a title asdasd adasd a adsdasds asdasdasdsad]
-
-          article.search-result.mb-1
-            a(href="#")
-              img(src="/uploads/thumbnails/thumbnail-1.png", alt="")
-            a(href="#") #[h3.mt-1 This is a title asdasd adasd a adsdasds asdasdasdsadThis is a title asdasd adasd a adsdasds asdasdasdsad]
+        
 
 
 

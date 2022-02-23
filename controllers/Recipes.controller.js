@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const { Recipe, User, Like, Category } = require('../models')
+const sequelize = require('sequelize')
 
 class RecipesController {
   getHome = async (req, res) => {
@@ -178,6 +179,20 @@ class RecipesController {
     }
 
     res.json({ status: 200 })
+  }
+
+  getSearch = async (req, res) => {
+    const term = req.query.term.toLowerCase()
+    const searchResults = await Recipe.findAll({
+      where: {
+        title: sequelize.where(
+          sequelize.fn('LOWER', sequelize.col('title')),
+          'LIKE',
+          `%${term}%`
+        ),
+      },
+    })
+    res.render('search', { title: 'Search', searchBar: true, searchResults })
   }
 }
 
