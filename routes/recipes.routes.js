@@ -1,4 +1,5 @@
 const express = require('express')
+const { body } = require('express-validator')
 const Router = express.Router()
 
 const multer = require('multer')
@@ -23,8 +24,8 @@ Router.get(
 )
 Router.post(
   '/recipes/new',
-  upload.single('thumbnail'),
   AuthController.isAuthenticated,
+  upload.single('thumbnail'),
   RecipesController.postNewRecipe
 )
 
@@ -59,6 +60,6 @@ Router.get('/admin', AuthController.isAuthenticated, RecipesController.getAdmin)
 Router.delete('/recipes/delete', RecipesController.deleteRecipe)
 
 // Search
-Router.get('/search', RecipesController.getSearch)
+Router.get('/search', body('term').trim().escape(), RecipesController.getSearch)
 
 module.exports = Router

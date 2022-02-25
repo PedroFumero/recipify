@@ -14,6 +14,7 @@ block content
             type='text',
             placeholder='Title',
             name='title'
+            required
           )
 
         h4.mt-1.green-text Recipe details
@@ -24,6 +25,7 @@ block content
             placeholder='45',
             min='1',
             name='minutes'
+            required
           )
         .input.mt-1
           label(for='servings') Servings:
@@ -32,6 +34,7 @@ block content
             placeholder='4',
             min='1',
             name='servings'
+            required
           )
         .input.mt-1.mb-1
           label(for='ingredients') Ingredients:
@@ -40,18 +43,19 @@ block content
             placeholder='11',
             min='1',
             name='ingredients'
+            required
           )
 
-        h4.mt-1.green-text.mb-1 Ingredients list
+        h4.mt-1.green-text.mb-1 Ingredients list #[span.brown-text (unordered list)]
         input#y(type='hidden', name='ingredientsList')
         trix-editor#ingredients(input='y')
 
-        h4.mt-1.green-text.mb-1 Instructions
+        h4.mt-1.green-text.mb-1 Instructions #[span.brown-text (ordered list)]
         input#x(type='hidden', name='instructions')
         trix-editor(input='x')
 
         h4.mt-1.green-text Thumbnail image
-        input.separator(type='file', name='thumbnail')
+        input.separator(type='file', name='thumbnail' required)
 
         h4.mt-1.green-text Select a category
         select#category.mt-1(name="category" required)

@@ -5,7 +5,7 @@ block content
     article.individual-article
       //- pre
       //-     #{recipe.ingredientsList}
-      h3.text-center.green-text.mb-1 Search results for: #[span.brown-text Term]
+      h3.text-center.green-text.mb-1 Search results for: #[span.brown-text #{term}]
       .search-container
         each searchResult in searchResults
           article.search-result.mb-1

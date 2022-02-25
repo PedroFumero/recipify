@@ -29,6 +29,7 @@ class RecipesController {
   }
 
   postNewRecipe = async (req, res, next) => {
+    // console.log(req.body)
     try {
       const recipe = await Recipe.create({
         ...req.body,
@@ -192,7 +193,12 @@ class RecipesController {
         ),
       },
     })
-    res.render('search', { title: 'Search', searchBar: true, searchResults })
+    res.render('search', {
+      title: 'Search',
+      searchBar: true,
+      searchResults,
+      term,
+    })
   }
 }
 

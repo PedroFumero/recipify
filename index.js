@@ -19,8 +19,8 @@ const db = require('./config/db')
 // import models
 require('./models')
 
-db.sync({ force: true })
-  // db.sync()
+// db.sync({ force: true })
+db.sync()
   .then(() => {
     console.log('Connection has been established successfully.')
   })
