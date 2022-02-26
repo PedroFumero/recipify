@@ -15,6 +15,7 @@ const Category = db.define(
       type: Sequelize.STRING(20),
       allowNull: false,
     },
+    thumbnail: Sequelize.STRING,
   },
   { timestamps: false }
 )

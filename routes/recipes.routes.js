@@ -62,4 +62,8 @@ Router.delete('/recipes/delete', RecipesController.deleteRecipe)
 // Search
 Router.get('/search', body('term').trim().escape(), RecipesController.getSearch)
 
+// Categories
+Router.get('/categories', RecipesController.getCategories)
+Router.get('/category/:categoryId', RecipesController.getRecipesByCategory)
+
 module.exports = Router

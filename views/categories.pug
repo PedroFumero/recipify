@@ -1,0 +1,35 @@
+extends layouts/main.layout.pug
+
+block content
+  main.latest-shared-container
+    h3.common-h3-title.mt-1.mb-1.text-center #{title}
+
+    .recipes-container
+      if categories.length
+        each category in categories
+          //- p #{category.name}
+          article.recipe
+            a(href=`/category/${category.id}`) 
+              img(
+                src=`/uploads/thumbnails/${category.thumbnail}`,
+                alt=category.name
+              )
+              h4.recipe-title #{ category.name }
+      //- if recipes.length
+      //-   each recipe in recipes
+      //-     article.recipe
+      //-       a(href=`/recipes/${recipe.id}`) 
+      //-         img(
+      //-           src=`/uploads/thumbnails/${recipe.thumbnail}`,
+      //-           alt=recipe.title
+      //-         )
+      //-         h4.recipe-title #{ recipe.title }
+      //-       .article-footer.grey-text
+      //-         .category-icon
+      //-           i.fa-solid.fa-user
+      //-           span #{recipe.user.firstName}
+      //-         .category-icon
+      //-           i.fa-solid.fa-tag
+      //-           span #{recipe.category.name}
+      else
+        p There's nothing to show

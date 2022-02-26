@@ -200,6 +200,31 @@ class RecipesController {
       term,
     })
   }
+
+  getCategories = async (req, res) => {
+    const categories = await Category.findAll()
+    res.render('categories', { title: 'Categories', categories })
+  }
+
+  getRecipesByCategory = async (req, res) => {
+    const { categoryId } = req.params
+    const recipes = await Recipe.findAll({
+      where: { categoryId },
+      include: [
+        {
+          model: User,
+          attributes: ['firstName', 'id'],
+        },
+        {
+          model: Category,
+          attributes: ['id', 'name'],
+        },
+      ],
+      attributes: ['thumbnail', 'id', 'title'],
+      order: [['id', 'DESC']],
+    })
+    res.render('show-by-category', { title: 'Recipes', recipes })
+  }
 }
 
 module.exports = new RecipesController()
