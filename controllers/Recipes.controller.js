@@ -223,7 +223,10 @@ class RecipesController {
       attributes: ['thumbnail', 'id', 'title'],
       order: [['id', 'DESC']],
     })
-    res.render('show-by-category', { title: 'Recipes', recipes })
+    const title = recipes.length
+      ? `Recipes on ${recipes[0].category.name} category`
+      : 'Recipes'
+    res.render('show-by-category', { title, recipes })
   }
 }
 
