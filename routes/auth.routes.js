@@ -60,4 +60,29 @@ Router.post(
 // Logout
 Router.get('/logout', AuthController.logOut)
 
+// Reset password
+Router.get('/forgot-password', AuthController.getForgotPassword)
+Router.post(
+  '/forgot-password',
+  body('email').notEmpty().withMessage('Email cannot be empty'),
+  extractErrors,
+  AuthController.postForgotPassword
+)
+Router.get('/forgot-password/:token', AuthController.getEnablingToken)
+Router.post(
+  '/reset-password',
+  body('password')
+    .notEmpty()
+    .withMessage("Password can't be empty")
+    .isLength({ min: 5 })
+    .withMessage('Password needs to have 5 characters min'),
+  body('password2')
+    .notEmpty()
+    .withMessage("Password confirmation can't be empty")
+    .isLength({ min: 5 })
+    .withMessage('Password needs to have 5 characters min'),
+  extractErrors,
+  AuthController.postResetPassword
+)
+
 module.exports = Router

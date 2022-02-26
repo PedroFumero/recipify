@@ -51,7 +51,7 @@ const User = db.define(
       },
     },
     token: {
-      type: Sequelize.STRING,
+      type: Sequelize.STRING(64),
     },
     expiration: {
       type: Sequelize.DATE,
