@@ -1,22 +1,16 @@
+const path = require('path')
 const Sequelize = require('sequelize')
+
+require('dotenv').config({ path: path.join(__dirname, '..', 'variables.env') })
 
 const sequelize = new Sequelize({
   dialect: 'mysql',
-  database: 'recipify2',
-  username: 'root',
-  password: '',
-  port: '3306',
-  host: 'localhost',
+  database: process.env.DATABASE_NAME,
+  username: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  host: process.env.DATABASE_HOST,
+  port: process.env.DATABASE_PORT,
   logging: false,
 })
-
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.')
-//   })
-//   .catch((error) => {
-//     console.error('Unable to connect to the database:', error)
-//   })
 
 module.exports = sequelize
