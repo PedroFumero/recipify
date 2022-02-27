@@ -11,7 +11,12 @@ const app = express()
 const { vardump } = require('./helpers')
 
 // Importing routes
-const { RecipeRoutes, AuthRoutes, UserRoutes } = require('./routes')
+const {
+  RecipeRoutes,
+  AuthRoutes,
+  UserRoutes,
+  GeneralRoutes,
+} = require('./routes')
 // Importing DB config
 const db = require('./config/db')
 
@@ -71,6 +76,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(RecipeRoutes)
 app.use(AuthRoutes)
 app.use(UserRoutes)
+app.use(GeneralRoutes)
 
 app.use('*', (req, res) => {
   res.render('404')

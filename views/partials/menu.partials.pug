@@ -1,17 +1,21 @@
 ul#menu.invisible
   li
-    a(href="/categories") Categories
+    a(href="/categories") #[i.fa-solid.fa-tag] Categories
+  li #[span.white-text.only-desk -]
   li
-    a(href="/about") About
-  li
-    a(href="/contact") Contact
+    a(href="/about") #[i.fa-solid.fa-lightbulb] About
+  //- li #[span.white-text.only-desk -]
+  //- li
+  //-   a(href="/contact") #[i.fa-solid.fa-address-card] Contact
   if user
     span.separator-auth.white-text.mr-1 |
     li
-      a(href="/admin") Admin panel
+      a(href="/admin") #[i.fa-solid.fa-hammer] Admin panel
+    li #[span.white-text.only-desk -]
     li
-      a(href="/edit-profile") Edit profile
+      a(href="/edit-profile") #[i.fa-solid.fa-pen] Edit profile
+    li #[span.white-text.only-desk -]
     li
-      a(href="/logout") Log out
+      a(href="/logout") #[i.fa-solid.fa-arrow-right-from-bracket] Log out
   
     

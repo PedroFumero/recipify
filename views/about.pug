@@ -1,0 +1,68 @@
+extends layouts/main.layout.pug
+
+block content
+  main.latest-shared-container
+    h3.common-h3-title.mt-1.mb-1.text-center About Recipify
+
+    .about-text 
+      h2.mt-1.mb-1.green-text.text-center The platform
+      p.mt-1.mb-1 #[span.green-text.bold Recipify] is a platform to share cooking recipes. The platform allows the users to do the following:
+      ul.mt-1.mb-1.separator
+        li Search recipes
+        li Sign up
+        li Sign in
+        li Edit profile details
+        li Create recipes
+        li Read recipes
+        li Update recipes
+        li Delete recipes
+        li Upload recipe thumbnails
+        li Like recipes
+        li Restore forgot password
+      h2.mt-1.mb-1.green-text.text-center Technologies supporting the platform
+      p.mt-1.mb-1 This platform was built using #[span.green-text.bold "Node.js"] and some tools part of the #[span.brown-text.bold "NPM"] ecosystem.
+      ul.mt-1.mb-1.separator
+        li Node.Js
+        li Express.Js
+        li Bcrypt
+        li Connect-Flash
+        li Connect-Session-Sequelize
+        li Cookie-Parser
+        li Dotenv
+        li Express-Session
+        li Express-Validator
+        li Multer
+        li Mysql2
+        li Nodemailer
+        li Passport
+        li Passport-Local
+        li Pug
+        li Sequelize
+      
+      .logos-container
+        .logo-container
+          img(src="/img/nodejs.png", alt="Node.js logo")
+        
+        .logo-container
+          img(src="/img/expressjs.png", alt="Express.js logo")
+
+        .logo-container
+          img(src="/img/mysql.png", alt="Mysql logo")
+        
+        .logo-container
+          img(src="/img/sequelize.png", alt="Sequelize logo")
+        
+        .logo-container
+          img(src="/img/passportjs.png", alt="Passportjs logo")
+        
+        .logo-container
+          img(src="/img/pugjs.png", alt="Pugjs logo")
+
+        .logo-container
+          img(src="/img/nodemailer.png", alt="Nodemailer logo")
+
+
+
+      
+
+    

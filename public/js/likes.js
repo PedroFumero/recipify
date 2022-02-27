@@ -25,7 +25,7 @@ const postLike = () => {
         .catch((err) => {
           Swal.fire({
             title: 'Sign in',
-            text: 'To give a like you need to sign in.',
+            text: 'To be able to give a like you need to log in.',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#8dad63',
