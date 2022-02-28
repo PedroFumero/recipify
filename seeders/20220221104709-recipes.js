@@ -15,7 +15,8 @@ module.exports = {
         thumbnail: 'thumbnail-1.png',
         userId: 1,
         categoryId: 1,
-        createdAt: '2022-02-09 12:32:07',
+        createdAt: '2022-02-08 12:32:07',
+        updatedAt: '2022-02-08 12:32:07',
       },
       {
         title: 'Italian Pizza Crust in Bread Machine',
@@ -30,6 +31,7 @@ module.exports = {
         userId: 2,
         categoryId: 1,
         createdAt: '2022-02-08 12:32:07',
+        updatedAt: '2022-02-08 12:32:07',
       },
       {
         title: 'Italian Lasagna',
@@ -44,6 +46,7 @@ module.exports = {
         userId: 3,
         categoryId: 1,
         createdAt: '2022-02-08 12:32:07',
+        updatedAt: '2022-02-08 12:32:07',
       },
       {
         title: 'Homemade Italian Beef',
@@ -57,7 +60,8 @@ module.exports = {
         thumbnail: 'thumbnail-4.png',
         userId: 4,
         categoryId: 1,
-        createdAt: '2022-02-21 12:32:07',
+        createdAt: '2022-02-08 12:32:07',
+        updatedAt: '2022-02-08 12:32:07',
       },
       {
         title: 'Italian "Stuffed" Toast (Toast Farcito)',
@@ -71,7 +75,8 @@ module.exports = {
         thumbnail: 'thumbnail-5.png',
         userId: 5,
         categoryId: 1,
-        createdAt: '2022-02-21 12:32:07',
+        createdAt: '2022-02-08 12:32:07',
+        updatedAt: '2022-02-08 12:32:07',
       },
       {
         title: 'Asian Grilled Flank Steak',
@@ -85,7 +90,8 @@ module.exports = {
         thumbnail: 'thumbnail-6.png',
         userId: 1,
         categoryId: 2,
-        createdAt: '2022-02-21 12:32:07',
+        createdAt: '2022-02-08 12:32:07',
+        updatedAt: '2022-02-08 12:32:07',
       },
       {
         title: 'Asian Back Ribs',
@@ -99,7 +105,8 @@ module.exports = {
         thumbnail: 'thumbnail-7.png',
         userId: 2,
         categoryId: 2,
-        createdAt: '2022-02-22 12:32:07',
+        createdAt: '2022-02-08 12:32:07',
+        updatedAt: '2022-02-08 12:32:07',
       },
       {
         title: 'Grilled Asian Ginger Pork Chops',
@@ -113,22 +120,9 @@ module.exports = {
         thumbnail: 'thumbnail-8.png',
         userId: 3,
         categoryId: 2,
-        createdAt: '2022-02-21 12:32:07',
+        createdAt: '2022-02-08 12:32:07',
+        updatedAt: '2022-02-08 12:32:07',
       },
-      // {
-      //   title: '',
-      //   minutes: ,
-      //   servings: ,
-      //   ingredients: ,
-      //   ingredientsList:
-      //     '<ul><li></li></ul>',
-      //   instructions:
-      //     '<ol><li></li></ol>',
-      //   thumbnail: 'thumbnail-.png',
-      //   userId: 5,
-      //   categoryId: 2,
-      //   createdAt: '2022-02-21 12:32:07',
-      // },
     ])
   },
 
