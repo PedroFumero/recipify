@@ -7,7 +7,7 @@ const sendEmail = require('../helpers/send-email')
 
 class AuthController {
   getRegister = (req, res) => {
-    res.render('Register', { title: 'Register' })
+    res.render('register', { title: 'Register' })
   }
 
   postRegister = async (req, res, next) => {
