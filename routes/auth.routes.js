@@ -54,7 +54,8 @@ Router.post(
     .trim(),
   body('password').notEmpty().withMessage('Password cannot be empty').trim(),
   extractErrors,
-  AuthController.postLogin
+  AuthController.postLogin,
+  AuthController.forceSaveSession
 )
 
 // Logout

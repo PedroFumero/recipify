@@ -53,7 +53,6 @@ class AuthController {
   }
 
   postLogin = passport.authenticate('local', {
-    successRedirect: '/',
     failureRedirect: '/login',
     failureFlash: true,
   })
@@ -161,6 +160,15 @@ class AuthController {
     await user.save()
     req.flash('success', 'Password changed successfully, you can sign in now.')
     res.redirect('/login')
+  }
+
+  forceSaveSession = (req, res, next) => {
+    req.session.save((err) => {
+      if (err) {
+        next()
+      }
+      return res.redirect('/')
+    })
   }
 }
 
